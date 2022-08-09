@@ -138,7 +138,14 @@ void loop() {
       lcd.print("   Unknown ID");
       lcd.setCursor(0,1);
       lcd.print(" Access denied");
-      delay(2000);
+      for(i=0;i<3;i++){
+          tone(buzzer, 1000); // Send 1KHz sound signal...
+          delay(300);        // ...for 1 sec
+          noTone(buzzer);     // Stop sound...
+          delay(300);        // ...for 1sec
+
+      }
+      delay(1000);
     }
   // Halt PICC
   rfid.PICC_HaltA();
@@ -216,6 +223,13 @@ void password(){  // a function that checks Password and opnes the lock
       lcd.clear();
       lcd.print("Incorrect");
       Serial.print("Incorrect\n");
+      for(i=0;i<3;i++){
+          tone(buzzer, 1000); // Send 1KHz sound signal...
+          delay(300);        // ...for 1 sec
+          noTone(buzzer);     // Stop sound...
+          delay(300);        // ...for 1sec
+
+      }
       delay(1000);
     }
     lcd.clear();    // Clear data 
